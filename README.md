@@ -3,12 +3,16 @@ Debian or Ubuntu install script for MariaDB Galera Cluster
 
 1 - Copy install-galera.sh script and execute it.
 (logged as root)
-```# wget https://github.com/juliosene/install-galera-cluster/raw/master/install-galera.sh
+```
+# wget https://github.com/juliosene/install-galera-cluster/raw/master/install-galera.sh
 # chmod 744 install-galera.sh
-# ./install-galerar.sh```
+# ./install-galerar.sh
+```
 
 2 - Change configuration files
-```# nano /etc/mysql/conf.d/cluster.cnf```
+```
+# nano /etc/mysql/conf.d/cluster.cnf
+```
 edit line wsrep_cluster_address="gcomm://node1_ip,node2_ip,node3_ip" and change node1_ip, node2_ip, node3_ip for the nodes IP addresses. If you have more nodes add separated by comma.
 save and exit (<CTRL+x> yes) 
 (Do it for all nodes)
@@ -17,18 +21,26 @@ save and exit (<CTRL+x> yes)
 copy /etc/mysql/debian.cnf from node1 to the same place in other nodes. (you can just edit and copy the same passwords to all nodes)
 
 4 - Stops database service in all nodes
-```# service mysql stop```
+```
+# service mysql stop
+```
 (Do it for all nodes)
 
 5 - Starts the first node
-```# service mysql start --wsrep-new-cluster```
+```
+# service mysql start --wsrep-new-cluster
+```
 
 6 - Starts other nodes
+```
 # service mysql start
+```
 (do it for all nodes, except the first one)
 
 7 - Test
+```
 # mysql -u root -e 'SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size"'
+```
 Output will be like this:
 ```
 +--------------+
