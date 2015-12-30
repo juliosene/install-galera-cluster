@@ -17,3 +17,17 @@ add-apt-repository "deb http://mirror.edatel.net.co/mariadb/repo/5.5/$DISTRO $RE
 apt-get update
 
 DEBIAN_FRONTEND=noninteractive apt-get install -y rsync galera mariadb-galera-server
+
+echo -e '[mysqld]
+#mysql settings
+binlog_format=ROW
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+query_cache_size=0
+query_cache_type=0
+bind-address=0.0.0.0
+#galera settings
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+wsrep_cluster_name="my_wsrep_cluster"
+# wsrep_cluster_address="gcomm://node1_ip,node2_ip,node3_ip"
+wsrep_sst_method=rsync' > /etc/mysql/conf.d/cluster.cnf
