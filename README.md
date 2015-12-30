@@ -6,7 +6,7 @@ Debian or Ubuntu install script for MariaDB Galera Cluster
 ```
 # wget https://github.com/juliosene/install-galera-cluster/raw/master/install-galera.sh
 # chmod 744 install-galera.sh
-# ./install-galerar.sh
+# ./install-galera.sh
 ```
 
 2 - Change configuration files
