@@ -13,7 +13,9 @@ Debian or Ubuntu install script for MariaDB Galera Cluster
 ```
 # nano /etc/mysql/conf.d/cluster.cnf
 ```
-edit line wsrep_cluster_address="gcomm://node1_ip,node2_ip,node3_ip" and change node1_ip, node2_ip, node3_ip for the nodes IP addresses. If you have more nodes add separated by comma.
+edit line 
+\# wsrep_cluster_address="gcomm://node1_ip,node2_ip,node3_ip"
+remove the comment mark (\#) and replace node1_ip, node2_ip, node3_ip with the nodes IP addresses. If you have more nodes add separated by comma.
 save and exit (<CTRL+x> yes) 
 (Do it for all nodes)
 
