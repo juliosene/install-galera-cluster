@@ -7,8 +7,8 @@ cd ~
 apt-get install lsb-release bc
 REL=`lsb_release -sc`
 DISTRO=`lsb_release -is | tr [:upper:] [:lower:]`
-NCORES=` cat /proc/cpuinfo | grep cores | wc -l`
-WORKER=`bc -l <<< "4*$NCORES"`
+# NCORES=` cat /proc/cpuinfo | grep cores | wc -l`
+# WORKER=`bc -l <<< "4*$NCORES"`
 
 apt-get install python-software-properties
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
@@ -19,7 +19,7 @@ apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y rsync galera mariadb-galera-server
 
 echo -e '[mysqld]
-#mysql settings
+# mysql settings
 binlog_format=ROW
 default-storage-engine=innodb
 innodb_autoinc_lock_mode=2
